@@ -1,0 +1,1227 @@
+body {
+  line-height: 1.6;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* ============================= Horizontal Scroll ============================= */
+.horizontal-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.panel {
+  flex: 0 0 100vw;
+  min-height: 100vh;
+  height: auto;
+  scroll-snap-align: start;
+  position: relative;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.page-content {
+  max-width: none;
+  margin: 0;
+  min-height: 100%;
+}
+
+/* ------------------------- Page Arrow ------------------------- */
+.page-arrows {
+  top: 20px;
+  left: 0;
+  right: 0;
+  padding: 0 40px;
+  margin-top: 16px;
+}
+.mp {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+/* ===== Arrow Styling ===== */
+.arrow {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 14px;
+}
+.arrow:hover {
+  background: #e0e0e0;
+}
+.spacer {
+  border: 1px solid #080808;
+  background: #080808;
+  color: #080808;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+/* --------------------------- Media --------------------------- */
+@media (max-width: 625px) {
+  .page-arrows {
+    padding: 10px;
+  }
+  .arrow {
+    padding: 5px;
+  }
+}
+
+/* ================================== Navbar ================================== */
+/* ---------------------- Navbar(Page 1) ---------------------- */
+.navbar-main {
+  background-color: #1b1b1b;
+  width: 78%;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* ====== Icon Links ====== */
+.icon-links {
+  padding: 26px 95px;
+  display: flex;
+  gap: 25px;
+}
+.icon-links a {
+  cursor: pointer;
+}
+
+.menu-toggle-main {
+  display: none;
+}
+
+/* --------------------- Navbar(Page 2-5) --------------------- */
+.navbar-mobile {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Page Director ===== */
+.navbar-director {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== Button Wraping ===== */
+.navbar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Navbar Content ===== */
+.navbar-content {
+  position: absolute;
+  top: 0;
+  margin: 0 auto;
+  background-color: #1b1b1b;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+.navbar-content.open {
+  max-height: 200px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.navbar-mobile .navbar-content.active {
+  max-height: 200px; /* big enough for menu */
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ===== Toggle Menu Up ===== */
+.menu-toggle-up {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 24px 0 0;
+  color: #ffa217;
+  display: none;
+  position: absolute;
+  bottom: -16px;
+  left: 49.1%;
+}
+.menu-toggle-up i {
+  font-size: 22px;
+  color: #ffb800;
+  border: 1px #080808;
+}
+
+/* ==== Toggle Menu Down ==== */
+.menu-toggle-down {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 16px 24px;
+}
+.menu-toggle-down i {
+  font-size: 22px;
+  color: #484848;
+}
+
+/* === Universal Styling === */
+.top-menu {
+  display: flex;
+  gap: 70px;
+  text-decoration: none;
+  padding: 24px 95px;
+  list-style: none;
+  transition: 0.25s ease;
+}
+.top-menu a {
+  text-decoration: none;
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1%;
+  padding: 8px 12px;
+  color: #9c9c9c;
+  transition: 0.25s ease;
+}
+.top-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+}
+.top-menu a.active {
+  border-bottom: 2px solid #2ab090;
+}
+
+/* ---------------------- Navbar(Media) ---------------------- */
+
+@media (max-width: 1630px) {
+  .icon-links {
+    padding: 15px 55px;
+    gap: 10px;
+  }
+  .top-menu {
+    gap: 35px;
+    padding: 15px 55px;
+  }
+}
+
+@media (max-width: 1316px) {
+  .icon-links {
+    padding: 15px 25px;
+    gap: 10px;
+  }
+  .top-menu {
+    gap: 10px;
+    padding: 15px 30px;
+  }
+  .top-menu a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .icon-links {
+    padding: 15px 20px;
+    gap: 5px;
+  }
+  .top-menu {
+    gap: 5px;
+    padding: 15px 20px;
+  }
+  .top-menu a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Navbar Main */
+  .navbar-main {
+    width: 100%;
+    padding: 0 16px;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+  .navbar-main .top-menu,
+  .navbar-main .icon-links {
+    display: none;
+  }
+  .menu-toggle-main {
+    display: block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 16px;
+  }
+  .menu-toggle-main i {
+    font-size: 24px;
+    color: #ffffff;
+  }
+  .navbar-main.open {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 12px;
+  }
+  .navbar-main.open .top-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  .navbar-main.open .icon-links {
+    display: flex;
+    gap: 16px;
+    padding: 0 16px 8px 16px;
+  }
+
+  /* Navbar Mobile */
+  .navbar-content .top-menu {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 80px;
+    max-height: none;
+    margin: 15px 55px;
+  }
+  .navbar-content.open {
+    max-height: none;
+  }
+  .menu-toggle-up {
+    left: 47.5%;
+  }
+}
+
+@media (max-width: 730px) {
+  .navbar-content .top-menu {
+    padding: 15px 30px;
+  }
+  .menu-toggle-up {
+    left: 46.8%;
+  }
+}
+
+@media (max-width: 625px) {
+  .navbar-content .top-menu {
+    padding: 5px;
+  }
+  .menu-toggle-up {
+    left: 45.8%;
+  }
+}
+
+/* ================================== Page 1 ================================== */
+#page1 {
+  background-color: #080808;
+  color: #fff;
+}
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+/* -------------------------- Profile -------------------------- */
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin: 60px 0px;
+  position: relative;
+}
+
+/* ==== Profile Description ==== */
+.profile-description {
+  max-width: 538px;
+}
+.profile-description h1 {
+  font-family: "Raleway", system-ui, sans-serif;
+  font-weight: 800;
+  font-style: bold;
+  font-size: 44px;
+  color: #ffff;
+}
+.profile-description p {
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1%;
+  margin: 20px 0px;
+  color: #ffff;
+}
+
+/* ===== Call to Action ===== */
+.cta-profile {
+  max-width: 307px;
+  height: 63px;
+  margin-top: 10px;
+  background-color: #3f8e0080;
+  border: 1px #62ba1b;
+  border-radius: 4px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.cta-profile a {
+  text-decoration: none;
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-style: bold;
+  font-size: 16px;
+  line-height: 1;
+  color: #ffff;
+}
+.cta-profile:hover {
+  background-color: #62ba1b;
+}
+
+/* ===== Profile Picture ===== */
+.profile-picture {
+  width: 416px;
+  height: 623px;
+  z-index: 1;
+  clip-path: ellipse(200px 200px at center);
+}
+
+/* ------------------------ Worked With ------------------------ */
+.worked-with {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.worked-with p {
+  font-style:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffff;
+  margin-bottom: 20px;
+  text-align: left;
+  display: flex;
+}
+
+/* ======= Logo Grid ======= */
+.logo-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+}
+.work-logo img {
+  max-width: 200px;
+  max-height: 60px;
+}
+
+/* --------------------- Profile(Media) --------------------- */
+@media (max-width: 1030px) {
+  .profile {
+    flex-direction: column-reverse;
+    margin: 30px 0px;
+  }
+  .logo-grid {
+    gap: 5px;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile {
+    text-align: center;
+  }
+  /* Profile Description */
+  .profile-description {
+    max-width: 350px;
+  }
+  .profile-description h1 {
+    font-size: 32px;
+  }
+  .profile-description p {
+    padding: 0px 5px;
+  }
+  /* Call to Action */
+  .cta-profile {
+    max-width: 260px;
+    height: auto;
+    padding: 14px 20px;
+    margin: 20px auto 0;
+    gap: 8px;
+  }
+
+  /* Profile Picture */
+  .profile-picture {
+    max-width: 300px;
+    height: 500px;
+    z-index: 1;
+    clip-path: ellipse(140px 140px at center);
+  }
+
+  /* Worked With */
+  .logo-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+  }
+  .work-logo {
+    max-width: 160px;
+    max-height: 60px;
+  }
+}
+
+/* ================================== Page 2 ================================== */
+#page2 {
+  background-color: #ffff;
+  color: #080808;
+}
+.study-wrapper {
+  padding: 10px;
+}
+
+/* ------------------------ Study Intro ------------------------ */
+.study-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* ====== Page Header ====== */
+.study-intro h1 {
+  font-family: raleway;
+  font-weight: 800;
+  font-style: extrabold;
+  font-size: 34px;
+}
+.study-intro p {
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1%;
+  color: #9c9c9c;
+  max-width: 570px;
+}
+
+/* ------------------------ Case Study ------------------------ */
+.case-study {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+.work-section {
+  display: flex;
+  gap: 26px;
+  max-width: 892px;
+  align-items: stretch;
+}
+
+/* ========== Label ========== */
+.label {
+  width: 52px;
+  height: 24px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 1%;
+}
+.amazon {
+  background-color: #fff6e9;
+  color: #ffa217;
+}
+.ups {
+  background-color: #d0e6ff;
+  color: #000aff;
+}
+.qvc {
+  background-color: #e0fff8;
+  color: #2ab090;
+}
+
+/* ===== Work Description ===== */
+.work-description {
+  width: 50%;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.work-description h2 {
+  height: 28px;
+  margin-bottom: 10px;
+  font-family: "Raleway", system-ui, sans-serif;
+  font-weight: 800;
+  font-style: extrabold;
+  font-size: 24px;
+  color: #080808;
+}
+.work-description p {
+  max-width: 421px;
+  margin-bottom: 40px;
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #9c9c9c;
+}
+
+/* ===== Call to Action ===== */
+.cta-work {
+  width: 190px;
+  height: 39px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.cta-work:hover {
+  padding: 2px;
+}
+.cta-work a {
+  text-decoration: none;
+  color: #ffff;
+}
+
+/* Amazon */
+.amazon-style {
+  background-color: #ffa217;
+}
+.amazon-style:hover {
+  background-color: #ffb84a;
+}
+
+/* Ups */
+.ups-style {
+  background-color: #000aff;
+}
+.ups-style:hover {
+  background-color: #4c4fff;
+}
+
+/* QVC */
+.qvc-style {
+  background-color: #2ab090;
+}
+.qvc-style:hover {
+  background-color: #4ccbae;
+}
+
+/* ====== Work Image ====== */
+.work-image {
+  width: 50%;
+  display: flex;
+  align-items: stretch;
+}
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ---------------------- Study(Media) ---------------------- */
+@media (max-width: 700px) {
+  .work-section {
+    flex-direction: column-reverse;
+  }
+  .flipper {
+    flex-direction: column;
+  }
+  .work-description {
+    width: 100%;
+  }
+  .work-image {
+    width: 100%;
+  }
+}
+/* ================================== Page 3 ================================== */
+#page3 {
+  background-color: #080808;
+  color: #ffff;
+}
+.testomonial-wrapper {
+  padding: 10px 0px;
+}
+
+/* --------------------- Testomonial Intro --------------------- */
+.testomonial-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.testomonial-intro h1 {
+  font-family: "Raleway", system-ui, sans-serif;
+  font-weight: 800;
+  font-style: extrabold;
+  font-size: 34px;
+  color: #ffffff;
+}
+.testomonial-intro p {
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1%;
+  color: #9c9c9c;
+  max-width: 570px;
+}
+
+/* ------------------------ Testomonial ------------------------ */
+.testomonial {
+  padding: 30px;
+}
+.row {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 62px;
+  align-items: center;
+  justify-content: center;
+}
+.testomony-wrap {
+  position: relative;
+}
+.comma {
+  position: absolute;
+  top: -160px;
+  left: 8%;
+  z-index: 100;
+  font-size: 100px;
+}
+
+/* ===== Testomony ===== */
+.testomony {
+  max-width: 445px;
+  height: auto;
+  padding: 30px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #484848, white) 1;
+  position: relative;
+}
+
+/* Client Testomony */
+.testomony p {
+  max-width: 409px;
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1%;
+}
+.client-profile {
+  display: flex;
+  gap: 20px;
+}
+
+/* Client Image */
+.client-1,
+.client-2,
+.client-3,
+.client-4 {
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+  clip-path: ellipse(25px 25px at 32px 27px);
+}
+.client-1 img,
+.client-2 img {
+  width: 65px;
+  height: 97px;
+}
+.client-3 img {
+  width: 119px;
+  height: 177px;
+  position: relative;
+  top: -25px;
+  left: -33px;
+}
+.client-4 img {
+  width: 156px;
+  height: 104px;
+  position: relative;
+  top: -15px;
+  left: -33px;
+}
+
+/* Client Name */
+.client-profile h2 {
+  max-width: 120px;
+  padding: 15px 0px;
+  font-family: Raleway;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 18px;
+  line-height: 100%;
+}
+
+/* ---------------------- Study(Media) ---------------------- */
+@media (max-width: 1100px) {
+  .row {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 505px) {
+  .client-profile {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+  }
+
+  .client-1,
+  .client-2,
+  .client-3,
+  .client-4 {
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    clip-path: ellipse(25px 25px at 32px 27px);
+  }
+  .client-1 img,
+  .client-2 img {
+    width: 65px;
+    height: 97px;
+  }
+  .client-3 img {
+    width: 119px;
+    height: 177px;
+    position: relative;
+    top: -25px;
+    left: -33px;
+  }
+  .client-4 img {
+    width: 156px;
+    height: 104px;
+    position: relative;
+    top: -15px;
+    left: -33px;
+  }
+}
+
+/* ================================== Page 4 ================================== */
+#page4 {
+  background-color: #ffff;
+  color: #080808;
+}
+.rw-wrapper {
+  padding: 20px;
+}
+
+/* -------------------- Recent Work Intro -------------------- */
+.recentwork-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.recentwork-intro h1 {
+  font-family: "Raleway", system-ui, sans-serif;
+  font-weight: 800;
+  font-style: extrabold;
+  font-size: 34px;
+  line-height: 100%;
+  color: #080808;
+  margin-bottom: 10px;
+}
+.recentwork-intro p {
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1%;
+  text-align: center;
+  color: #9c9c9c;
+  max-width: 570px;
+  height: 72px;
+}
+
+/* ---------------------- Recent Work ---------------------- */
+.rw-slider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px; /* optional, just to limit width */
+  margin: 0 auto;
+}
+
+/* ==== Slider Button ==== */
+.slide-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid #d0d0d0;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+.slide-btn span {
+  font-size: 20px;
+  line-height: 1;
+  color: #555555;
+}
+.left-btn {
+  margin-right: 20px;
+}
+.right-btn {
+  margin-left: 20px;
+}
+.slide-btn:hover:not(:disabled) {
+  background-color: #f7f7f7;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+.slide-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ===== RW Window ===== */
+.rw-window {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+.rw-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.page {
+  display: flex;
+  flex: 0 0 100%;
+  gap: 24px;
+}
+
+/* ===== Job Card ===== */
+.job-card {
+  display: flex;
+  flex: 1 1 50%;
+}
+.filler {
+  width: 60px;
+}
+.job-image img {
+  display: block;
+  max-width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.job-card h2 {
+  font-family: "Raleway", system-ui, sans-serif;
+  font-weight: 800;
+  font-style: ExtraBold;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-top: 40px;
+}
+.job-card p {
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1%;
+  color: #9c9c9c;
+  padding: 20px 0px;
+}
+
+/* === Call to Action === */
+.cta-rw {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 95px;
+  padding: 10px 24px;
+  border-radius: 4px;
+
+  background-color: #1ca145;
+}
+.cta-rw:hover {
+  padding: 12px 26px;
+  background-color: #31c25a;
+}
+.cta-rw a {
+  text-decoration: none;
+  font-family:
+    IBM Plex Momo,
+    Courier New,
+    Courier,
+    monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* ------------------- Recent Work(Media) ------------------- */
+@media (max-width: 1100px) {
+  .page {
+    flex-wrap: wrap;
+  }
+  .job-card {
+    flex: 1 1 100%;
+  }
+  .filler {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .rw-slider {
+    gap: 16px;
+  }
+  .page {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .job-card {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+/* ================================== Page 5 ================================== */
+#page5 {
+  background-color: #080808;
+  color: #ffff;
+}
+#page5 .page-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+/* ------------------------- Contact ------------------------- */
+.contact {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
+.contact-wrapper {
+  margin: 40px auto;
+}
+
+/*---------------- Recent Work Intro ----------------*/
+.contact-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.contact-intro h1 {
+  font-family: "Raleway", system-ui, sans-serif;
+  font-weight: 800;
+  font-style: extrabold;
+  font-size: 34px;
+  line-height: 100%;
+  color: #ffff;
+  margin-bottom: 10px;
+}
+.contact-intro p {
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1%;
+  text-align: center;
+  color: #9c9c9c;
+  max-width: 570px;
+  height: 72px;
+}
+
+/*---------------- Conections Form ----------------*/
+.contact-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.inputbox {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* ===== Input Box ===== */
+.inputbox label {
+  font-family:
+    "IBM Plex Momo",
+    Courier New,
+    Courier,
+    monospace;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+.inputbox input {
+  max-width: 350px;
+  padding: 20px;
+  gap: 12px;
+  border-radius: 4px;
+  border-width: 1px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+.in-put input:hover {
+  padding: 25px;
+}
+
+/* ===== Textarea ===== */
+.inputbox textarea {
+  width: 350px;
+  padding-bottom: 120px;
+  gap: 12px;
+  border-radius: 4px;
+  border-width: 1px;
+}
+.inputbox textarea:hover {
+  padding-bottom: 125px;
+}
+
+/* ======= Submit ======= */
+.submit-btn {
+  background-color: #3f8e00;
+  border: 1px solid #62ba1b;
+}
+.submit-btn:hover {
+  background-color: #58b000;
+}
+
+/* ------------------------- Footer ------------------------- */
+footer {
+  width: 100%;
+  background-color: #1b1b1b;
+  flex-shrink: 0;
+}
+footer p {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --------------------- Contact(Media) --------------------- */
+@media (max-width: 400px) {
+  .inputbox textarea {
+    width: 250px;
+  }
+}
